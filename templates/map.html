@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_4b5a4e7b6fca3db5dbf2895dff1c2b13 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_4b5a4e7b6fca3db5dbf2895dff1c2b13" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_4b5a4e7b6fca3db5dbf2895dff1c2b13 = L.map(
+                "map_4b5a4e7b6fca3db5dbf2895dff1c2b13",
+                {
+                    center: [47.7643, 27.5169],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 17,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_5192afcc853321f9d96f01d990820a18 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_5192afcc853321f9d96f01d990820a18.addTo(map_4b5a4e7b6fca3db5dbf2895dff1c2b13);
+        
+    
+            var marker_e257ece8b2fe89d8bf714055fdb94379 = L.marker(
+                [47.7643, 27.5169],
+                {}
+            ).addTo(map_4b5a4e7b6fca3db5dbf2895dff1c2b13);
+        
+    
+            marker_e257ece8b2fe89d8bf714055fdb94379.bindTooltip(
+                `<div>
+                     Текущее положение
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var polygon_60d2bd48c6fda72587e8c2d77721a07d = L.polygon(
+                [[47.774777, 27.493026], [47.782002, 27.496112], [47.779407, 27.506153], [47.767593, 27.4977]],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_4b5a4e7b6fca3db5dbf2895dff1c2b13);
+        
+    
+            polygon_60d2bd48c6fda72587e8c2d77721a07d.bindTooltip(
+                `<div>
+                     Территория 1
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var polygon_ea38b672b6e0a80c126e85c7503dfa55 = L.polygon(
+                [[47.75927, 27.46054], [47.75779, 27.45999], [47.75621, 27.45903], [47.7572011, 27.4578334], [47.75666, 27.45695], [47.760534, 27.4525276], [47.7615223, 27.4543951], [47.76372, 27.45269], [47.7639, 27.45315], [47.76366, 27.45369], [47.76356, 27.45418], [47.76371, 27.45491], [47.76373, 27.45523], [47.76361, 27.4557], [47.76322, 27.45665], [47.76201, 27.45822], [47.7596, 27.45889], [47.7595, 27.45917]],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_4b5a4e7b6fca3db5dbf2895dff1c2b13);
+        
+    
+            polygon_ea38b672b6e0a80c126e85c7503dfa55.bindTooltip(
+                `<div>
+                     Teritoriu 1
+                 </div>`,
+                {"sticky": true}
+            );
+        
+</script>
+</html>
