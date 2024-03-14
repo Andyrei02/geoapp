@@ -22,5 +22,5 @@ def show_map():
     return render_template('map.html')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(port=5000, debug=True)
 
