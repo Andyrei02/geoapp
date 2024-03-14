@@ -16,3 +16,4 @@ urllib3==2.2.1
 Werkzeug==3.0.1
 xyzservices==2023.10.1
 gunicorn
+python-dotenv
