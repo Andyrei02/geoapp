@@ -1,3 +1,5 @@
+import os
+
 from flask import Flask, render_template, request
 from show_map import ShowMap
 
@@ -16,7 +18,7 @@ def geodata():
     long = data['longitude']
     # Process latitude and longitude variables here
     ShowMap(lat, long)
-    return render_template('map.html')
+    return render_template('index.html')
 
 
 @app.route('/map')
@@ -25,5 +27,5 @@ def show_map():
     return render_template('map.html')
 
 if __name__ == '__main__':
-    app.run(port=5000, debug=True)
+    app.run(port=os.getenv("PORT", default=5000), debug=True)
 

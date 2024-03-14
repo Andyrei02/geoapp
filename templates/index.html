@@ -6,34 +6,31 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css')}}" />
 </head>
 <body>
-    <h1>Get Geodata</h1>
-    <button id="getGeodataBtn">Get Geodata</button>
-    <p id="geodata"></p>
-    <p id="mapLink"></p>
-
-
     <div class="top-menu">
         <ul>
-            <li><a href="#get-location">Get Location</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#settings">Settings</a></li>
+            <li><a id="getLocationBtn" href="#get-location">Get Location</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Settings</a></li>
+            <li><p id="geodata"></p></li>
+
         </ul>
     </div>
     <div class="content">
         <iframe src="/map" frameborder="0" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
     </div>
     <div class="bottom">
-        <p>Copyright &copy; 2024 My Website</p>
+        <p>Copyright &copy; 2024 GeoApp</p>
         <p>Author: Andrei Cenusa</p>
     </div>
 
     <script>
-        document.getElementById('getGeodataBtn').addEventListener('click', function() {
+        document.getElementById('getLocationBtn').addEventListener('click', function() {
+            event.preventDefault();
             if ("geolocation" in navigator) {
                 navigator.geolocation.getCurrentPosition(function(position) {
                     var latitude = position.coords.latitude;
                     var longitude = position.coords.longitude;
-                    document.getElementById('geodata').innerHTML = 'Latitude: ' + latitude + '<br>Longitude: ' + longitude;
+                    document.getElementById('geodata').innerHTML = latitude + ', ' + longitude;
 
                     // Send latitude and longitude to server
                     fetch('/geodata', {
@@ -42,10 +39,7 @@
                             'Content-Type': 'application/json'
                         },
                         body: JSON.stringify({latitude: latitude, longitude: longitude})
-                    }).then(response => {
-                        // Once the server has processed the data, display the link to map.html
-                        document.getElementById('mapLink').innerHTML = '<a href="/map">View Map</a>';
-                    });
+                    })
                 });
             } else {
                 document.getElementById('geodata').innerHTML = 'Geolocation is not supported by this browser.';
