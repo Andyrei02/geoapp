@@ -12,11 +12,10 @@
             <li><a href="#">About</a></li>
             <li><a href="#">Settings</a></li>
             <li><p id="geodata"></p></li>
-
         </ul>
     </div>
     <div class="content">
-        <iframe src="/map" frameborder="0" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        <iframe id="map-iframe" src="/map" frameborder="0" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
     </div>
     <div class="bottom">
         <p>Copyright &copy; 2024 GeoApp</p>
@@ -44,6 +43,7 @@
             } else {
                 document.getElementById('geodata').innerHTML = 'Geolocation is not supported by this browser.';
             }
+            document.getElementById('map-iframe').src = document.getElementById('map-iframe').src;
         });
     </script>
 </body>
