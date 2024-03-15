@@ -10,21 +10,26 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-
 @app.route('/geodata', methods=['POST'])
 def geodata():
     data = request.get_json()
     lat = data['latitude']
-    long = data['longitude']
+    long_ = data['longitude']
     # Process latitude and longitude variables here
-    ShowMap(lat, long)
-    return render_template('index.html')
+    show_map = ShowMap()
+    map_html = show_map.make_map(lat, long_)
+    return render_template('index.html', map_html=map_html)
 
-
-@app.route('/map')
+@app.route('/map', methods=['POST'])
 def show_map():
+    data = request.get_json()
+    latitude = data.get('latitude')
+    longitude = data.get('longitude')
+
     # Additional processing if needed
-    return render_template('map.html')
+    show_map = ShowMap()
+    map_html = show_map.make_map(latitude, longitude)
+    return map_html
 
 if __name__ == '__main__':
     app.run(port=os.getenv("PORT", default=5000), debug=True)

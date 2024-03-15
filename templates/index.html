@@ -15,7 +15,7 @@
         </ul>
     </div>
     <div class="content">
-        <iframe id="map-iframe" src="/map" frameborder="0" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        <iframe id="map-iframe" src="{{ map_html | safe }}" frameborder="0" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
     </div>
     <div class="bottom">
         <p>Copyright &copy; 2024 GeoApp</p>
@@ -23,7 +23,7 @@
     </div>
 
     <script>
-        document.getElementById('getLocationBtn').addEventListener('click', function() {
+        document.getElementById('getLocationBtn').addEventListener('click', function(event) {
             event.preventDefault();
             if ("geolocation" in navigator) {
                 navigator.geolocation.getCurrentPosition(function(position) {
@@ -32,20 +32,28 @@
                     document.getElementById('geodata').innerHTML = latitude + ', ' + longitude;
 
                     // Send latitude and longitude to server
-                    fetch('/geodata', {
+                    fetch('/map', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
                         },
                         body: JSON.stringify({latitude: latitude, longitude: longitude})
-                    })
+                    }).then(function(response) {
+                        if (response.ok) {
+                            return response.text();
+                        }
+                        throw new Error('Network response was not ok.');
+                    }).then(function(mapHtml) {
+                        // Update the map iframe with the received HTML
+                        document.getElementById('map-iframe').srcdoc = mapHtml;
+                    }).catch(function(error) {
+                        console.error('There was a problem with the fetch operation:', error);
+                    });
                 });
             } else {
                 document.getElementById('geodata').innerHTML = 'Geolocation is not supported by this browser.';
             }
-            document.getElementById('map-iframe').src = document.getElementById('map-iframe').src;
         });
     </script>
 </body>
 </html>
-
