@@ -86,8 +86,8 @@ iframe {
 
 .floating-btn {
     position: fixed;
-    bottom: 100px;
-    right: 20px;
+    bottom: 10%;
+    right: 5%;
     background-color: #4285f4;
     color: white;
     border: none;
