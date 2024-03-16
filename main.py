@@ -20,16 +20,20 @@ def geodata():
     map_html = show_map.make_map(lat, long_)
     return render_template('index.html', map_html=map_html)
 
-@app.route('/map', methods=['POST'])
+@app.route('/map', methods=['GET', 'POST'])
 def show_map():
-    data = request.get_json()
-    latitude = data.get('latitude')
-    longitude = data.get('longitude')
+    if request.method == 'POST':
+        data = request.get_json()
+        latitude = data.get('latitude')
+        longitude = data.get('longitude')
 
-    # Additional processing if needed
-    show_map = ShowMap()
-    map_html = show_map.make_map(latitude, longitude)
-    return map_html
+        # Additional processing if needed
+        show_map = ShowMap()
+        map_html = show_map.make_map(latitude, longitude)
+        return map_html
+    else:
+        # Handle GET request, e.g., return a form to input latitude and longitude
+        return 'Please use a POST request to generate the map.'
 
 if __name__ == '__main__':
     app.run(port=os.getenv("PORT", default=5000), debug=True)

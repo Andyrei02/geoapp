@@ -8,7 +8,7 @@
 <body>
     <div class="top-menu">
         <ul>
-            <li><a id="getLocationBtn" href="#get-location">Get Location</a></li>
+            <!-- <li><a id="getLocationBtn" href="#get-location">Get Location</a></li> -->
             <li><a href="#">About</a></li>
             <li><a href="#">Settings</a></li>
             <li><p id="geodata"></p></li>
@@ -21,6 +21,9 @@
         <p>Copyright &copy; 2024 GeoApp</p>
         <p>Author: Andrei Cenusa</p>
     </div>
+
+    <button id="floatingGetLocationBtn" class="floating-btn">📍</button>
+    <a id="getLocationBtn" class="floating-btn" href="#get-location">📍</a>
 
     <script>
         document.getElementById('getLocationBtn').addEventListener('click', function(event) {
